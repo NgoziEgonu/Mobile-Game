@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.iOS;
 using UnityEngine.UI;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class Movement : MonoBehaviour
 
     public float rot_Rate;
     public float speed;
+
+    private Vector2 touchStartPos;
+    private Vector2 touchEndPos;
+
+    private Vector3 rot;
+
+    float spins;
+    public TextMeshProUGUI spins_Counter;
 
     float tilt_Move;
 
@@ -21,6 +30,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         dolphin_rb = GetComponent<Rigidbody>();
+        spins = 0.0f;
     }
 
     // Update is called once per frame
@@ -33,15 +43,47 @@ public class Movement : MonoBehaviour
 
         if (!Grounded)
         {
-            //Make the dolphin rotate if finger is held down
-            //dolphin.transform.Rotate(new Vector3(0, rot_Rate, 0) * Time.deltaTime);
+            //Dolphin is not rotating
+            dolphin.transform.Rotate(rot.x, rot.y + ( speed * Time.deltaTime), rot.z);
+            Debug.Log("I'm spinning");
         }
+
+        if ((Mathf.Rad2Deg * dolphin.transform.rotation.y) == 100.0f)
+        {
+            spins++;
+            Debug.Log(spins);
+
+            spins_Counter.text = "" + spins;
+        }
+
+        //Debug.Log((Mathf.Rad2Deg * dolphin.transform.rotation.y));
 
     }
 
     void TouchControls()
     {
-        //Touch touch = Input.GetTouch(0);
+        Touch touch = Input.GetTouch(0);
+
+        if (Input.touchCount > 0 && touch.phase == TouchPhase.Began && Grounded)
+        {
+            touchStartPos = touch.position;
+        }
+
+        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended && Grounded)
+        {
+            touchEndPos = touch.position;
+
+            if (touchEndPos.y > touchStartPos.y)
+            {
+                Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+                dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
+
+                Grounded = false;
+            }
+        }
+
+
 
         //if (touch.phase == TouchPhase.Began && Grounded)
         //{
@@ -52,14 +94,14 @@ public class Movement : MonoBehaviour
         //    Grounded = false;
         //}
         //Alternative
-        if (Input.GetKey(KeyCode.Space) && Grounded)
-        {
-            //Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        //if (Input.GetKey(KeyCode.Space) && Grounded)
+        //{
+        //    //Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-            dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
+        //    dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
-            Grounded = false;
-        }
+        //    Grounded = false;
+        //}
 
     }
     void Tilt()

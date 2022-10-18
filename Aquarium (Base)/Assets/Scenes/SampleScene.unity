@@ -2328,7 +2328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27538
+  m_Name: pb_Mesh27554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3966,7 +3966,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27600
+  m_Name: pb_Mesh27614
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4189,7 +4189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dolphin: {fileID: 1913127091}
   dolphin_rb: {fileID: 1913127093}
-  rot_Rate: 100
+  rot_Rate: 180
   speed: 10
   spins_Counter: {fileID: 159731996}
 --- !u!1 &1940698487

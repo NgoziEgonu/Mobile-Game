@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     float tilt_Move;
 
     bool Grounded = true;
+    bool delay = false;
 
 
     // Start is called before the first frame update
@@ -37,24 +38,18 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        Tilt();
+        //Tilt();
 
         TouchControls();
 
-        if (!Grounded)
-        {
-            //Dolphin is not rotating
-            dolphin.transform.Rotate(rot.x, rot.y + ( speed * Time.deltaTime), rot.z);
-            Debug.Log("I'm spinning");
-        }
 
-        if ((Mathf.Rad2Deg * dolphin.transform.rotation.y) == 100.0f)
-        {
-            spins++;
-            Debug.Log(spins);
+        //if ((Mathf.Rad2Deg * dolphin.transform.rotation.y) == 100.0f)
+        //{
+        //    spins++;
+        //    Debug.Log(spins);
 
-            spins_Counter.text = "" + spins;
-        }
+        //    spins_Counter.text = "" + spins;
+        //}
 
         //Debug.Log((Mathf.Rad2Deg * dolphin.transform.rotation.y));
 
@@ -62,38 +57,42 @@ public class Movement : MonoBehaviour
 
     void TouchControls()
     {
-        Touch touch = Input.GetTouch(0);
-
-        if (Input.touchCount > 0 && touch.phase == TouchPhase.Began && Grounded)
+        
+        
+        if (Input.touchCount > 0)
         {
-            touchStartPos = touch.position;
-        }
+            Touch touch = Input.GetTouch(0);
 
-        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended && Grounded)
-        {
-            touchEndPos = touch.position;
-
-            if (touchEndPos.y > touchStartPos.y)
+            if (touch.phase == TouchPhase.Began && Grounded)
             {
-                Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
                 dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
                 Grounded = false;
+                delay = true;
             }
+
+            if (touch.phase == TouchPhase.Stationary && !Grounded)
+            {
+                //Delay is not working properly
+                if (delay == true)
+                {
+                    StartCoroutine(WaitASecond());
+
+                    dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
+                }
+                
+            }
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                delay = false;
+            }
+
         }
 
-
-
-        //if (touch.phase == TouchPhase.Began && Grounded)
-        //{
-        //    Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-        //    dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
-
-        //    Grounded = false;
-        //}
-        //Alternative
+        //Alternative for Keyboard
         //if (Input.GetKey(KeyCode.Space) && Grounded)
         //{
         //    //Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -102,26 +101,26 @@ public class Movement : MonoBehaviour
 
         //    Grounded = false;
         //}
-
     }
-    void Tilt()
-    {
-        tilt_Move = Input.acceleration.x * speed;
 
-        dolphin.transform.Translate(0, 0, tilt_Move * Time.deltaTime);
+    //void Tilt()
+    //{
+    //    tilt_Move = Input.acceleration.x * speed;
 
-        //Alternative
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            dolphin.transform.Translate(0, 0, -speed * Time.deltaTime);
-        }
-        
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            dolphin.transform.Translate(0, 0, speed * Time.deltaTime);
-        }
+    //    dolphin.transform.Translate(0, 0, tilt_Move * Time.deltaTime);
 
-    }
+    //    //Alternative
+    //    if (Input.GetKey(KeyCode.LeftArrow))
+    //    {
+    //        dolphin.transform.Translate(0, 0, -speed * Time.deltaTime);
+    //    }
+
+    //    if (Input.GetKey(KeyCode.RightArrow))
+    //    {
+    //        dolphin.transform.Translate(0, 0, speed * Time.deltaTime);
+    //    }
+
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -129,5 +128,11 @@ public class Movement : MonoBehaviour
         {
             Grounded = true;
         }
+    }
+    
+    IEnumerator WaitASecond()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Delaying milady");
     }
 }

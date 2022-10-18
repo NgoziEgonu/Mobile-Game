@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.iOS;
-using UnityEngine.UI;
 using TMPro;
 
 public class Movement : MonoBehaviour
@@ -12,14 +11,11 @@ public class Movement : MonoBehaviour
 
     public float rot_Rate;
     public float speed;
+    //public TextMeshProUGUI spins_Counter;
 
-    private Vector2 touchStartPos;
-    private Vector2 touchEndPos;
+    ScoreCounter scoreCounter;
 
-    private Vector3 rot;
-
-    float spins;
-    public TextMeshProUGUI spins_Counter;
+    float score;
 
     float tilt_Move;
 
@@ -31,7 +27,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         dolphin_rb = GetComponent<Rigidbody>();
-        spins = 0.0f;
+        scoreCounter = FindObjectOfType<ScoreCounter>();
     }
 
     // Update is called once per frame
@@ -69,6 +65,8 @@ public class Movement : MonoBehaviour
 
                 dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
+                scoreCounter.Scoring();
+
                 Grounded = false;
                 delay = true;
             }
@@ -93,14 +91,14 @@ public class Movement : MonoBehaviour
         }
 
         //Alternative for Keyboard
-        //if (Input.GetKey(KeyCode.Space) && Grounded)
-        //{
-        //    //Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        if (Input.GetKey(KeyCode.Space) && Grounded)
+        {
+            Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        //    dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
+            dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
-        //    Grounded = false;
-        //}
+            Grounded = false;
+        }
     }
 
     //void Tilt()

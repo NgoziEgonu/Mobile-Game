@@ -12,9 +12,14 @@ public class Movement : MonoBehaviour
     ScoreCounter scoreCounter;
 
     float flip_Rate;
-    public float rot_Rate;
+     float rot_Rate;
     public float speed;
-    //public TextMeshProUGUI spins_Counter;
+    public TextMeshProUGUI spins_Counter;
+
+    public int spins;
+    float rot1;
+    float rot2;
+    float rot_Difference;
 
     float tilt_Move;
 
@@ -25,9 +30,11 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rot_Rate = 250.0f;
         flip_Rate = Mathf.Rad2Deg * (100.0f) * Time.deltaTime;
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>(); // Reference https://stackoverflow.com/questions/34436458/unity-c-how-to-call-a-function-from-another-script-to-start-animation
+
     }
 
     // Update is called once per frame
@@ -50,7 +57,7 @@ public class Movement : MonoBehaviour
 
     }
 
-    void TouchControls()
+    public void TouchControls()
     {
         if (Input.touchCount > 0)
         {
@@ -75,7 +82,21 @@ public class Movement : MonoBehaviour
                 {
                     StartCoroutine(WaitASecond());
 
+                    rot1 = dolphin.transform.rotation.eulerAngles.y;
+
                     dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
+
+                    rot2 = dolphin.transform.rotation.eulerAngles.y;
+
+                    rot_Difference = rot2 - rot1;
+
+                    if (rot_Difference < 0) //Reference: https://stackoverflow.com/questions/44117470/counting-rotations-unity-c
+                    {
+                        spins++;
+                        scoreCounter.score += 10;
+                        spins_Counter.text = "" + spins + " spins";
+                        Debug.Log("1 Rotation");
+                    }
                 }
 
             }
@@ -128,6 +149,13 @@ public class Movement : MonoBehaviour
     IEnumerator WaitASecond()
     {
         yield return new WaitForSeconds(1.0f);
-        Debug.Log("Delaying milady");
+        //Debug.Log("Delaying milady");
     }
+
+    //int SpinCounter(int spins)
+    //{
+
+
+    //    return spins;
+    //}
 }

@@ -5,10 +5,13 @@ using TMPro;
 
 public class ScoreCounter : MonoBehaviour
 {
-    float score;
-    //float spins;
+    public float score;
+    int spins;
 
     public GameObject dolphin;
+
+    Movement movement;
+    GameManager gameManager;
 
     public TextMeshProUGUI score_Text;
 
@@ -16,20 +19,22 @@ public class ScoreCounter : MonoBehaviour
     void Start()
     {
         score = 0.0f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-
+        movement = FindObjectOfType<Movement>();
+        gameManager = FindObjectOfType<GameManager>();
+        spins = movement.spins;
     }
 
     public void Scoring()
     {
         score += 5;
         score_Text.text = "Score: " + score;
-        Debug.Log("Scoring");
+        //Debug.Log("Scoring");
+
+        if (score >= 30)
+        {
+            gameManager.GameOver();
+            movement.spins_Counter.gameObject.SetActive(false);
+        }
     }
 
 

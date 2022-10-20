@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     ScoreCounter scoreCounter;
 
     float flip_Rate;
-     float rot_Rate;
+    float rot_Rate;
     public float speed;
     public TextMeshProUGUI spins_Counter;
 
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
         //Tilt();
 
         TouchControls();
-
+        
         //Flip Mechanic Not working properly yet
         //if (Input.touchCount > 0)
         //{
@@ -151,11 +151,4 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         //Debug.Log("Delaying milady");
     }
-
-    //int SpinCounter(int spins)
-    //{
-
-
-    //    return spins;
-    //}
 }

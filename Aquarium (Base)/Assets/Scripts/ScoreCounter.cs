@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Analytics;
 
 public class ScoreCounter : MonoBehaviour
 {
@@ -30,10 +31,13 @@ public class ScoreCounter : MonoBehaviour
         score_Text.text = "Score: " + score;
         //Debug.Log("Scoring");
 
-        if (score >= 30)
+        if (score >= 100)
         {
+            AnalyticsResult analyticsResult = Analytics.CustomEvent("MaxScore");
             gameManager.GameOver();
             movement.spins_Counter.gameObject.SetActive(false);
+            Time.timeScale = 0.0f;
+            Debug.Log("analytics result = " + analyticsResult);
         }
     }
 

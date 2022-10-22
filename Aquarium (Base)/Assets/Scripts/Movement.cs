@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        //Tilt();
+        Tilt();
 
         TouchControls();
         
@@ -119,24 +119,24 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //void Tilt()
-    //{
-    //    tilt_Move = Input.acceleration.x * speed;
+    void Tilt()
+    {
+        tilt_Move = Input.acceleration.x * speed;
 
-    //    dolphin.transform.Translate(0, 0, tilt_Move * Time.deltaTime);
+        dolphin.transform.Translate(0, 0, tilt_Move * Time.deltaTime);
 
-    //    //Alternative
-    //    if (Input.GetKey(KeyCode.LeftArrow))
-    //    {
-    //        dolphin.transform.Translate(0, 0, -speed * Time.deltaTime);
-    //    }
+        //Alternative
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dolphin.transform.Translate(0, 0, -speed * Time.deltaTime);
+        }
 
-    //    if (Input.GetKey(KeyCode.RightArrow))
-    //    {
-    //        dolphin.transform.Translate(0, 0, speed * Time.deltaTime);
-    //    }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            dolphin.transform.Translate(0, 0, speed * Time.deltaTime);
+        }
 
-    //}
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

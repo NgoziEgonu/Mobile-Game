@@ -40,6 +40,4 @@ public class ScoreCounter : MonoBehaviour
             Debug.Log("analytics result = " + analyticsResult);
         }
     }
-
-
 }

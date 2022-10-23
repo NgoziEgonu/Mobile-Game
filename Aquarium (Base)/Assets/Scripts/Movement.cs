@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         rot_Rate = 250.0f;
         flip_Rate = Mathf.Rad2Deg * (100.0f) * Time.deltaTime;
         dolphin_rb = GetComponent<Rigidbody>();
-        scoreCounter = FindObjectOfType<ScoreCounter>(); // Reference https://stackoverflow.com/questions/34436458/unity-c-how-to-call-a-function-from-another-script-to-start-animation
+        scoreCounter = FindObjectOfType<ScoreCounter>();
 
     }
 

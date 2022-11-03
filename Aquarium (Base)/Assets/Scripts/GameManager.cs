@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     void Pause()
     {
         isGamePaused = true;

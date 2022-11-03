@@ -4627,84 +4627,17 @@ MonoBehaviour:
   speed: 10
   spins_Counter: {fileID: 1320905744}
   spins: 0
---- !u!1 &1940698487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1940698488}
-  - component: {fileID: 1940698489}
-  - component: {fileID: 1940698490}
-  - component: {fileID: 1940698491}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1940698488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940698487}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56874084, y: 2.5563924, z: 9.483615}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1940698489
+--- !u!114 &1940698490 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8045937292310481166, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+  m_PrefabInstance: {fileID: 8045937293674986612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940698487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2583eab1a69099c4395fe5d00d0962b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  dolphin: {fileID: 1913127091}
-  score_Text: {fileID: 737869612}
---- !u!114 &1940698490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940698487}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fc813eff758d744cb476456ffdb0c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 1036488418}
-  objectivesScreen: {fileID: 1108726417}
-  interstitialAds: {fileID: 1940698491}
---- !u!114 &1940698491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940698487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575da9ef8e278bc42bae0c2eb6a8aab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidAdUnitId: Interstitial_Android
-  _iOsAdUnitId: Interstitial_iOS
 --- !u!1 &2081749975
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,3 +5566,76 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &8045937293674986612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8045937292310481155, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.56874084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5563924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.483615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481164, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045937292310481165, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: dolphin
+      value: 
+      objectReference: {fileID: 1913127091}
+    - target: {fileID: 8045937292310481165, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: score_Text
+      value: 
+      objectReference: {fileID: 737869612}
+    - target: {fileID: 8045937292310481166, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 1036488418}
+    - target: {fileID: 8045937292310481166, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+      propertyPath: objectivesScreen
+      value: 
+      objectReference: {fileID: 1108726417}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}

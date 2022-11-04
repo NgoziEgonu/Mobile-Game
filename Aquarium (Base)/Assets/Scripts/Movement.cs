@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.iOS;
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     float tilt_Move;
 
     bool Grounded = true;
-    bool delay = false;
+    //bool delay = false;
 
 
     // Start is called before the first frame update
@@ -71,39 +71,33 @@ public class Movement : MonoBehaviour
 
                 scoreCounter.Scoring();
 
-                Grounded = false;
-                delay = true;
+                StartCoroutine(WaitASecond());
             }
 
             if (touch.phase == TouchPhase.Stationary && !Grounded)
             {
-                //Delay is not working properly
-                if (delay == true)
+
+                rot1 = dolphin.transform.rotation.eulerAngles.y;
+
+                dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
+
+                rot2 = dolphin.transform.rotation.eulerAngles.y;
+
+                rot_Difference = rot2 - rot1;
+
+                if (rot_Difference < 0) //Reference: https://stackoverflow.com/questions/44117470/counting-rotations-unity-c
                 {
-                    StartCoroutine(WaitASecond());
-
-                    rot1 = dolphin.transform.rotation.eulerAngles.y;
-
-                    dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
-
-                    rot2 = dolphin.transform.rotation.eulerAngles.y;
-
-                    rot_Difference = rot2 - rot1;
-
-                    if (rot_Difference < 0) //Reference: https://stackoverflow.com/questions/44117470/counting-rotations-unity-c
-                    {
-                        spins++;
-                        scoreCounter.score += 10;
-                        spins_Counter.text = "" + spins + " spins";
-                        Debug.Log("1 Rotation");
-                    }
+                    spins++;
+                    scoreCounter.score += 10;
+                    spins_Counter.text = "" + spins + " spins";
+                    Debug.Log("1 Rotation");
                 }
-
+                
             }
 
             if (touch.phase == TouchPhase.Ended)
             {
-                delay = false;
+                Grounded = true;
             }
 
         }
@@ -148,7 +142,8 @@ public class Movement : MonoBehaviour
     
     IEnumerator WaitASecond()
     {
-        yield return new WaitForSeconds(1.0f);
-        //Debug.Log("Delaying milady");
+        yield return new WaitForSeconds(0.15f);
+        Grounded = false;
+        Debug.Log("Delaying as I should");
     }
 }

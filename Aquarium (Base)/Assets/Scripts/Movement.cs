@@ -23,8 +23,10 @@ public class Movement : MonoBehaviour
 
     float tilt_Move;
 
+    [SerializeField]
     bool Grounded = true;
-    //bool delay = false;
+    [SerializeField]
+    bool Something = true;
 
 
     // Start is called before the first frame update
@@ -61,44 +63,47 @@ public class Movement : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began && Grounded)
+            if (Something)
             {
-                Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                Touch touch = Input.GetTouch(0);
 
-                dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
-
-                scoreCounter.Scoring();
-
-                StartCoroutine(WaitASecond());
-            }
-
-            if (touch.phase == TouchPhase.Stationary && !Grounded)
-            {
-
-                rot1 = dolphin.transform.rotation.eulerAngles.y;
-
-                dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
-
-                rot2 = dolphin.transform.rotation.eulerAngles.y;
-
-                rot_Difference = rot2 - rot1;
-
-                if (rot_Difference < 0) //Reference: https://stackoverflow.com/questions/44117470/counting-rotations-unity-c
+                if (touch.phase == TouchPhase.Began && Grounded)
                 {
-                    spins++;
-                    scoreCounter.score += 10;
-                    spins_Counter.text = "" + spins + " spins";
-                    Debug.Log("1 Rotation");
-                }
-                
-            }
+                    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
-            if (touch.phase == TouchPhase.Ended)
-            {
-                Grounded = true;
+                    dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
+
+                    scoreCounter.Scoring();
+
+                    StartCoroutine(WaitASecond());
+                }
+
+                if (touch.phase == TouchPhase.Stationary && !Grounded)
+                {
+
+                    rot1 = dolphin.transform.rotation.eulerAngles.y;
+
+                    dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
+
+                    rot2 = dolphin.transform.rotation.eulerAngles.y;
+
+                    rot_Difference = rot2 - rot1;
+
+                    if (rot_Difference < 0) //Reference: https://stackoverflow.com/questions/44117470/counting-rotations-unity-c
+                    {
+                        spins++;
+                        scoreCounter.score += 10;
+                        spins_Counter.text = "" + spins + " spins";
+                    }
+
+                }
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    Something = false;
+                }
             }
+            
 
         }
 
@@ -132,11 +137,13 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "Ground")
         {
+            
             Grounded = true;
+            Something = true;
         }
     }
     

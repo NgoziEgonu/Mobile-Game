@@ -356,13 +356,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253814427}
   m_CullTransparentMesh: 1
+--- !u!1 &539944558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8045937292310481155, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
+  m_PrefabInstance: {fileID: 8045937293674986612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &544985901
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28966
+  m_Name: pb_Mesh28970
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2033,7 +2038,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28770
+  m_Name: pb_Mesh28774
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2197,7 +2202,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28884
+  m_Name: pb_Mesh28888
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2367,6 +2372,7 @@ GameObject:
   - component: {fileID: 1245380076}
   - component: {fileID: 1245380075}
   - component: {fileID: 1245380074}
+  - component: {fileID: 1245380077}
   m_Layer: 0
   m_Name: Dolphin_Body
   m_TagString: Untagged
@@ -2382,7 +2388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245380072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05000019, y: -0.68, z: 0.1500001}
+  m_LocalPosition: {x: 0.05000019, y: -0.95, z: 0.1500001}
   m_LocalScale: {x: 1, y: 2.2, z: 0.67001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2452,6 +2458,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245380072}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1245380077
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245380072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 484c232ea11a22645aa09a712702418a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1320905742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2619,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28932
+  m_Name: pb_Mesh28936
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4570,6 +4596,7 @@ GameObject:
   - component: {fileID: 1913127092}
   - component: {fileID: 1913127093}
   - component: {fileID: 1913127094}
+  - component: {fileID: 1913127095}
   m_Layer: 0
   m_Name: Dolphin
   m_TagString: Untagged
@@ -4629,17 +4656,50 @@ MonoBehaviour:
   spins: 0
   Grounded: 1
   Something: 1
+--- !u!95 &1913127095
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913127091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c04fa08413a17db4cbf3887ab1814081, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1940698490 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8045937292310481166, guid: f5f6d177d70e614479c702d06ea00c0f, type: 3}
   m_PrefabInstance: {fileID: 8045937293674986612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 539944558}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fc813eff758d744cb476456ffdb0c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1940698492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539944558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf38ee5b3a6015f469c00176b5f49a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objective: {fileID: 1066111229}
 --- !u!1 &2081749975
 GameObject:
   m_ObjectHideFlags: 0

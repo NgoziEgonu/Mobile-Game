@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     public GameObject dolphin;
     public Rigidbody dolphin_rb;
 
+    private Animation flipAnim;
+
     ScoreCounter scoreCounter;
 
     float flip_Rate;
@@ -33,9 +35,12 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rot_Rate = 250.0f;
-        flip_Rate = Mathf.Rad2Deg * (100.0f) * Time.deltaTime;
+        //flip_Rate = Mathf.Rad2Deg * (100.0f);
+        flip_Rate = 250.0f;
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>();
+
+        flipAnim = gameObject.GetComponent<Animation>();
 
     }
 
@@ -43,19 +48,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Tilt need reworking
-        Tilt();
+        //Tilt();
 
         TouchControls();
+
+        Flip();
         
-        //Flip Mechanic Not working properly yet
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-        //    if (touch.tapCount == 2)
-        //    {
-        //        dolphin.transform.Rotate(new Vector3(0, 0, flip_Rate ));
-        //    }
-        //}
 
     }
 
@@ -115,6 +113,20 @@ public class Movement : MonoBehaviour
             dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
             Grounded = false;
+        }
+    }
+
+    void Flip()
+    {
+        //Flip Mechanic Not working properly yet
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.tapCount == 2)
+            {
+                flipAnim.Play("flip");
+
+            }
         }
     }
 

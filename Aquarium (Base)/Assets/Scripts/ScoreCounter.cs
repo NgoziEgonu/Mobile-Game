@@ -31,13 +31,13 @@ public class ScoreCounter : MonoBehaviour
         score_Text.text = "Score: " + score;
         //Debug.Log("Scoring");
 
-        if (score >= 100)
-        {
-            AnalyticsResult analyticsResult = Analytics.CustomEvent("MaxScore");
-            gameManager.GameOver();
-            movement.spins_Counter.gameObject.SetActive(false);
-            Time.timeScale = 0.0f;
-            Debug.Log("analytics result = " + analyticsResult);
-        }
+        //if (score >= 100)
+        //{
+        //    AnalyticsResult analyticsResult = Analytics.CustomEvent("MaxScore");
+        //    gameManager.GameOver();
+        //    movement.spins_Counter.gameObject.SetActive(false);
+        //    Time.timeScale = 0.0f;
+        //    Debug.Log("analytics result = " + analyticsResult);
+        //}
     }
 }

@@ -10,16 +10,16 @@ public class Movement : MonoBehaviour
     public Rigidbody dolphin_rb;
 
     [SerializeField]
-    private Animator flipAnim;
+    private Animator anim;
 
     ScoreCounter scoreCounter;
 
-    float flip_Rate;
     float rot_Rate;
     public float speed;
     public TextMeshProUGUI spins_Counter;
 
     public int spins;
+    public int flips;
     float rot1;
     float rot2;
     float rot_Difference;
@@ -36,12 +36,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rot_Rate = 250.0f;
-        //flip_Rate = Mathf.Rad2Deg * (100.0f);
-        flip_Rate = 250.0f;
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>();
 
-        flipAnim = gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
 
     }
 
@@ -122,13 +120,22 @@ public class Movement : MonoBehaviour
         //Flip Mechanic Not working properly yet
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(1);
-            if (touch.tapCount == 2)
+            Touch touch = Input.GetTouch(0);
+            if (touch.tapCount == 2 && !anim.GetBool("isFlipping"))
             {
-                flipAnim.Play("flip", 0, 0.0f);
-
-            }
+                anim.SetBool("isFlipping", true);
+                flips++;
+                //scoreCounter.score += 3;
+                Debug.Log("Flip");
+                // anim.SetBool("isFlipping", false);
+                
+                Invoke(nameof(ResetFlip), 0.4f);
+            }         
         }
+    }
+    void ResetFlip()
+    {
+        anim.SetBool("isFlipping", false);
     }
 
     void Tilt()
@@ -164,6 +171,6 @@ public class Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
         Grounded = false;
-        Debug.Log("Delaying as I should");
+        //Debug.Log("Delaying as I should");
     }
 }

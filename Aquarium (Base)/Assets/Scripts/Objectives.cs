@@ -6,9 +6,11 @@ using TMPro;
 public class Objectives : MonoBehaviour
 {
     Movement movement;
-    public TextMeshProUGUI objective;
+    public TextMeshProUGUI objective1;
+    public TextMeshProUGUI objective2;
 
     int spinsIndex;
+    int flipsIndex;
     
 
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class Objectives : MonoBehaviour
         movement = FindObjectOfType<Movement>();
 
         spinsIndex = Random.Range(1, 12);
+        flipsIndex = Random.Range(1, 4);
 
         DisplayObjective();
     }
@@ -32,8 +35,14 @@ public class Objectives : MonoBehaviour
     {
         if (movement.spins == spinsIndex)
         {
-            objective.fontStyle = FontStyles.Strikethrough;
-            Debug.Log("Boop");
+            objective1.fontStyle = FontStyles.Strikethrough;
+            Debug.Log("Objective 1 complete");
+        }
+
+        if (movement.flips == flipsIndex)
+        {
+            objective2.fontStyle = FontStyles.Strikethrough;
+            Debug.Log("Objective 2 complete");
         }
     }
 
@@ -42,12 +51,21 @@ public class Objectives : MonoBehaviour
 
         if (spinsIndex > 1)
         {
-            objective.text = "Spin " + spinsIndex + " times";
+            objective1.text = "Spin " + spinsIndex + " times";
         }
         else
         {
-            objective.text = "Spin " + spinsIndex + " time";
+            objective1.text = "Spin " + spinsIndex + " time";
         }
-        
+
+        if (flipsIndex > 1)
+        {
+            objective2.text = "Flip" + flipsIndex + " times";
+        }
+        else
+        {
+            objective2.text = "Flip " + flipsIndex + " time";
+        }
+
     }
 }

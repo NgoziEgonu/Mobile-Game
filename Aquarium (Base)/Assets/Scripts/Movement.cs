@@ -9,7 +9,8 @@ public class Movement : MonoBehaviour
     public GameObject dolphin;
     public Rigidbody dolphin_rb;
 
-    private Animation flipAnim;
+    [SerializeField]
+    private Animator flipAnim;
 
     ScoreCounter scoreCounter;
 
@@ -40,7 +41,7 @@ public class Movement : MonoBehaviour
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>();
 
-        flipAnim = gameObject.GetComponent<Animation>();
+        flipAnim = gameObject.GetComponent<Animator>();
 
     }
 
@@ -121,10 +122,10 @@ public class Movement : MonoBehaviour
         //Flip Mechanic Not working properly yet
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            Touch touch = Input.GetTouch(1);
             if (touch.tapCount == 2)
             {
-                flipAnim.Play("flip");
+                flipAnim.Play("flip", 0, 0.0f);
 
             }
         }

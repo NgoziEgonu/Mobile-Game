@@ -9,9 +9,6 @@ public class Movement : MonoBehaviour
     public GameObject dolphin;
     public Rigidbody dolphin_rb;
 
-    //[SerializeField]
-    //private Animator anim;
-
     ScoreCounter scoreCounter;
 
     float rot_Rate;
@@ -35,11 +32,9 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rot_Rate = 250.0f;
+
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>();
-
-        //anim = gameObject.GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -49,10 +44,6 @@ public class Movement : MonoBehaviour
         //Tilt();
 
         TouchControls();
-
-        //Flip();
-        
-
     }
 
     public void TouchControls()
@@ -69,7 +60,7 @@ public class Movement : MonoBehaviour
 
                     dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
-                    scoreCounter.Scoring();
+                    scoreCounter.score += 5;
 
                     StartCoroutine(WaitASecond());
                 }
@@ -113,29 +104,6 @@ public class Movement : MonoBehaviour
             Grounded = false;
         }
     }
-
-    //void Flip()
-    //{
-    //    //Flip Mechanic Not working properly yet
-    //    if (Input.touchCount > 0)
-    //    {
-    //        Touch touch = Input.GetTouch(0);
-    //        if (touch.tapCount == 2 && !anim.GetBool("isFlipping"))
-    //        {
-    //            anim.SetBool("isFlipping", true);
-    //            flips++;
-    //            //scoreCounter.score += 3;
-    //            Debug.Log("Flip");
-    //            // anim.SetBool("isFlipping", false);
-                
-    //            Invoke(nameof(ResetFlip), 0.4f);
-    //        }         
-    //    }
-    //}
-    //void ResetFlip()
-    //{
-    //    anim.SetBool("isFlipping", false);
-    //}
 
     void Tilt()
     {

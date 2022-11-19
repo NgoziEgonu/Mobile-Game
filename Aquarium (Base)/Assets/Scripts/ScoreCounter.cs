@@ -25,11 +25,14 @@ public class ScoreCounter : MonoBehaviour
         spins = movement.spins;
     }
 
-    public void Scoring()
+    private void Update()
     {
-        score += 5;
+        Scoring();
+    }
+
+    void Scoring()
+    {
         score_Text.text = "Score: " + score;
-        //Debug.Log("Scoring");
 
         //if (score >= 100)
         //{

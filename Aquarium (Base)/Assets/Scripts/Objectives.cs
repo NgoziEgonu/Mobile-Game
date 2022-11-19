@@ -13,7 +13,10 @@ public class Objectives : MonoBehaviour
 
     int spinsIndex;
     int flipsIndex;
-    
+    [SerializeField]
+    bool objective1Complete = false;
+    bool objective2Complete = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,7 @@ public class Objectives : MonoBehaviour
         movement = FindObjectOfType<Movement>();
         animController = FindObjectOfType<AnimationController>();
 
-        spinsIndex = Random.Range(1, 12);
+        spinsIndex = Random.Range(1, 3); //12
         flipsIndex = Random.Range(1, 4);
 
         DisplayObjective();
@@ -36,16 +39,19 @@ public class Objectives : MonoBehaviour
 
     void Level1Objective()
     {
-        if (movement.spins == spinsIndex)
+        if (movement.spins == spinsIndex && objective1Complete == false)
         {
             objective1.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 1 complete");
+            objective1Complete = true;
+
         }
 
-        if (animController.flips == flipsIndex)
+        if (animController.flips == flipsIndex && objective2Complete == false)
         {
             objective2.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 2 complete");
+            objective2Complete = true;
         }
     }
 

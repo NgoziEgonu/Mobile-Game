@@ -6,6 +6,7 @@ public class AnimationController : MonoBehaviour
 {
     [SerializeField]
     private Animator anim;
+    ScoreCounter scoreCounter;
 
     public int flips;
 
@@ -13,6 +14,7 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        scoreCounter = FindObjectOfType<ScoreCounter>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class AnimationController : MonoBehaviour
             {
                 anim.SetBool("isFlipping", true);
                 flips++;
-                //scoreCounter.score += 3;
+                scoreCounter.score += 3;
                 Debug.Log("Flip");
                 // anim.SetBool("isFlipping", false);
 

@@ -6,6 +6,8 @@ using TMPro;
 public class Objectives : MonoBehaviour
 {
     Movement movement;
+    AnimationController animController;
+
     public TextMeshProUGUI objective1;
     public TextMeshProUGUI objective2;
 
@@ -17,6 +19,7 @@ public class Objectives : MonoBehaviour
     void Start()
     {
         movement = FindObjectOfType<Movement>();
+        animController = FindObjectOfType<AnimationController>();
 
         spinsIndex = Random.Range(1, 12);
         flipsIndex = Random.Range(1, 4);
@@ -39,7 +42,7 @@ public class Objectives : MonoBehaviour
             Debug.Log("Objective 1 complete");
         }
 
-        if (movement.flips == flipsIndex)
+        if (animController.flips == flipsIndex)
         {
             objective2.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 2 complete");
@@ -60,7 +63,7 @@ public class Objectives : MonoBehaviour
 
         if (flipsIndex > 1)
         {
-            objective2.text = "Flip" + flipsIndex + " times";
+            objective2.text = "Flip " + flipsIndex + " times";
         }
         else
         {

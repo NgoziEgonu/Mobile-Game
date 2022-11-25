@@ -17,3 +17,4 @@ Heres wat you need to do next.
 16. obstacles for the dolphin to make the game more difficult
 17. more levels we need that
 18. end screen needs work aswell with the reload.
+19. Kenny icons

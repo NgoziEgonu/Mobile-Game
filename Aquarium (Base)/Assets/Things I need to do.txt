@@ -1,0 +1,19 @@
+Heres wat you need to do next.
+1. fIX THE ui
+2. Score need to translate to money
+3. In game store to change te skin of the dolphin and increase the speeds of certain things
+4. Camera should move with the player
+5. Buttons still interfering with the player screen tap
+6. Start menu needs revamping
+7. Sound for the game which can be reduced in settings
+8. Particle system for the water splash
+9. Shader for water in tank
+10. Assets for the whiteboxing
+11. Particle system or shader for water movement trail
+12. Probalby need more mechanics
+13. Unity Ads need to actually work
+14. statistics in the game with the dashboard thing.
+15. animations for the people in the audience
+16. obstacles for the dolphin to make the game more difficult
+17. more levels we need that
+18. end screen needs work aswell with the reload.

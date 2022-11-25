@@ -67,4 +67,29 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    //private void FixedUpdate()
+    //{
+    //    Transform transform = Camera.main.transform;
+    //    //Vector3 touchPos;
+
+    //    if(Input.touchCount == 0)
+    //    {
+    //        Touch touch = Input.GetTouch(0);
+
+    //        //touchPos = Camera.main.ScreenToWorldPoint(new Vector3((int)touch.position.x, (int)touch.position.y, 0));
+
+    //        RaycastHit hit;
+
+    //        //Draw a ray from the tapped position
+    //        Ray ray = Camera.main.ScreenPointToRay(touch.position);
+
+    //        LayerMask mask = LayerMask.GetMask("UI");
+
+    //        if (Physics.Raycast(ray, out hit, mask))
+    //        {
+    //            Debug.Log("UI Tapped");
+    //        }
+    //    }
+        
+    //}
 }

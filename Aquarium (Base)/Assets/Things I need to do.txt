@@ -3,7 +3,7 @@ Heres wat you need to do next.
 2. Score need to translate to money
 3. In game store to change te skin of the dolphin and increase the speeds of certain things
 4. Camera should move with the player
-5. Buttons still interfering with the player screen tap
+5. Buttons still interfering with the player screen tap (FIXED TEMP)
 6. Start menu needs revamping
 7. Sound for the game which can be reduced in settings
 8. Particle system for the water splash

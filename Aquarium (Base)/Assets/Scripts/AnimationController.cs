@@ -28,15 +28,19 @@ public class AnimationController : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.tapCount == 2 && !anim.GetBool("isFlipping"))
-            {
-                anim.SetBool("isFlipping", true);
-                flips++;
-                scoreCounter.score += 3;
-                Debug.Log("Flip");
-                // anim.SetBool("isFlipping", false);
 
-                Invoke(nameof(ResetFlip), 0.4f);
+            if (touch.position.y < Screen.height / 1.4f)
+            {
+                if (touch.tapCount == 2 && !anim.GetBool("isFlipping"))
+                {
+                    anim.SetBool("isFlipping", true);
+                    flips++;
+                    scoreCounter.score += 3;
+                    Debug.Log("Flip");
+                    // anim.SetBool("isFlipping", false);
+
+                    Invoke(nameof(ResetFlip), 0.4f);
+                }
             }
         }
     }

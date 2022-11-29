@@ -94,6 +94,8 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _Normal_Speed: 0.2
+    - _Normal_Strength: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
@@ -114,10 +116,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColour: {r: 0, g: 0.5446644, b: 0.78431374, a: 0}
+    - _BaseColour: {r: 0, g: 0.4655188, b: 0.6698113, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Ripple_Colour: {r: 0, g: 2.4627461, b: 2.1275032, a: 0}
+    - _Min_Max_Distance: {r: 0, g: 0, b: 0, a: 0}
+    - _Ripple_Colour: {r: 0.07476629, g: 2.2643492, b: 1.966291, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2676040314370708245

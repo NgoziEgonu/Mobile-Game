@@ -7,22 +7,12 @@ using UnityEngine.Analytics;
 public class ScoreCounter : MonoBehaviour
 {
     public float score;
-    int spins;
-
-    public GameObject dolphin;
-
-    Movement movement;
-    GameManager gameManager;
-
     public TextMeshProUGUI score_Text;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0.0f;
-        movement = FindObjectOfType<Movement>();
-        gameManager = FindObjectOfType<GameManager>();
-        spins = movement.spins;
     }
 
     private void Update()
@@ -33,6 +23,7 @@ public class ScoreCounter : MonoBehaviour
     void Scoring()
     {
         score_Text.text = "Score: " + score;
+
 
         //if (score >= 100)
         //{

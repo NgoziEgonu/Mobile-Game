@@ -13,9 +13,13 @@ public class Objectives : MonoBehaviour
 
     int spinsIndex;
     int flipsIndex;
+    public int fundsCount;
+
     [SerializeField]
     bool objective1Complete = false;
     bool objective2Complete = false;
+
+    
 
 
     // Start is called before the first frame update
@@ -28,13 +32,14 @@ public class Objectives : MonoBehaviour
         flipsIndex = Random.Range(1, 4);
 
         DisplayObjective();
+
+        fundsCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         Level1Objective();
-        
     }
 
     void Level1Objective()
@@ -44,7 +49,7 @@ public class Objectives : MonoBehaviour
             objective1.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 1 complete");
             objective1Complete = true;
-
+            fundsCount += 10;
         }
 
         if (animController.flips == flipsIndex && objective2Complete == false)
@@ -52,6 +57,7 @@ public class Objectives : MonoBehaviour
             objective2.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 2 complete");
             objective2Complete = true;
+            fundsCount += 10;
         }
     }
 

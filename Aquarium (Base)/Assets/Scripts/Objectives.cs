@@ -28,8 +28,8 @@ public class Objectives : MonoBehaviour
         movement = FindObjectOfType<Movement>();
         animController = FindObjectOfType<AnimationController>();
 
-        spinsIndex = Random.Range(1, 3); //12
-        flipsIndex = Random.Range(1, 4);
+        spinsIndex = Random.Range(4, 8); 
+        flipsIndex = Random.Range(3, 6);
 
         DisplayObjective();
 
@@ -49,7 +49,7 @@ public class Objectives : MonoBehaviour
             objective1.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 1 complete");
             objective1Complete = true;
-            fundsCount += 10;
+            fundsCount += 25;
         }
 
         if (animController.flips == flipsIndex && objective2Complete == false)
@@ -57,7 +57,7 @@ public class Objectives : MonoBehaviour
             objective2.fontStyle = FontStyles.Strikethrough;
             Debug.Log("Objective 2 complete");
             objective2Complete = true;
-            fundsCount += 10;
+            fundsCount += 25;
         }
     }
 

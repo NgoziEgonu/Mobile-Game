@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     bool gameOver = false;
     bool isGamePaused = false;
 
+    float posZ;
+
+    public GameObject snack;
     public GameObject gameOverScreen;
     public GameObject objectivesScreen;
 
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] InterstitialAds interstitialAds;
     Objectives objectives;
+    
+    Vector3 SnackSpawn;
 
     private void Start()
     {
@@ -23,11 +28,19 @@ public class GameManager : MonoBehaviour
         objectivesScreen.SetActive(false);
 
         objectives = GetComponent<Objectives>();
+
+        posZ = Random.Range(0, 15);
+
+        SnackSpawn = new Vector3(-9.43f, 7.0f, posZ);
+
+        LaunchSnack();
     }
 
     void Update()
     {
         AddFunds();
+
+        //if () PRESS A KEY TO RESPAWN OBJECT
     }
 
     public void GameOver()
@@ -83,5 +96,10 @@ public class GameManager : MonoBehaviour
     void AddFunds()
     {
         fundsUI.text = "Funds: " + objectives.fundsCount;
+    }
+
+    public void LaunchSnack()
+    {
+        Instantiate(snack, SnackSpawn, Quaternion.identity);
     }
 }

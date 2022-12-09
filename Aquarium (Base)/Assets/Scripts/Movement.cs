@@ -66,6 +66,8 @@ public class Movement : MonoBehaviour
                     {
                         Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
+                        dolphin.transform.Rotate(new Vector3(20, 0, 0));
+
                         dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
                         scoreCounter.score += 5;
@@ -78,11 +80,17 @@ public class Movement : MonoBehaviour
 
                         //camera2.Priority = 12;
 
-                        rot1 = dolphin.transform.rotation.eulerAngles.y;
+                        //rot1 = dolphin.transform.rotation.eulerAngles.y;
 
-                        dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
+                        //dolphin.transform.Rotate(new Vector3(0, rot_Rate * Time.deltaTime, 0));
 
-                        rot2 = dolphin.transform.rotation.eulerAngles.y;
+                        //rot2 = dolphin.transform.rotation.eulerAngles.y;
+
+                        rot1 = dolphin.transform.rotation.eulerAngles.z;
+
+                        dolphin.transform.Rotate(new Vector3(0, 0, rot_Rate * Time.deltaTime));
+
+                        rot2 = dolphin.transform.rotation.eulerAngles.z;
 
                         rot_Difference = rot2 - rot1;
 

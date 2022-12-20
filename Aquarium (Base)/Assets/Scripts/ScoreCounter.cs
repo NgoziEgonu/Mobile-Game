@@ -22,7 +22,7 @@ public class ScoreCounter : MonoBehaviour
 
     void Scoring()
     {
-        score_Text.text = "Score: " + score;
+        score_Text.text = "" + score;
 
 
         //if (score >= 100)

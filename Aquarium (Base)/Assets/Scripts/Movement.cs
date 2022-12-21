@@ -7,6 +7,7 @@ using Cinemachine;
 
 public class Movement : MonoBehaviour
 {
+    public Animator animator;
     public GameObject dolphin;
     public Rigidbody dolphin_rb;
     public CinemachineVirtualCamera camera1;
@@ -26,7 +27,7 @@ public class Movement : MonoBehaviour
     float tilt_Move;
 
     [SerializeField]
-    bool Grounded = true;
+    public bool Grounded = true;
     [SerializeField]
     bool Something = true;
 
@@ -39,6 +40,8 @@ public class Movement : MonoBehaviour
         camera1.Priority = 11;
         camera2.Priority = 10;
 
+        animator.SetBool("isIdle", true);
+
         dolphin_rb = GetComponent<Rigidbody>();
         scoreCounter = FindObjectOfType<ScoreCounter>();
     }
@@ -47,7 +50,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Tilt need reworking
-        //Tilt();
+        Tilt();
 
         TouchControls();
     }
@@ -58,15 +61,19 @@ public class Movement : MonoBehaviour
         {
             if (Something)
             {
+                
+
                 Touch touch = Input.GetTouch(0);
                 //Temporary solution to button problem
                 if (touch.position.y < Screen.height / 1.4f )
                 {
                     if (touch.phase == TouchPhase.Began && Grounded)
                     {
+                        animator.SetBool("isIdle", false);
+
                         Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
-                        dolphin.transform.Rotate(new Vector3(20, 0, 0));
+                        //dolphin.transform.Rotate(new Vector3(40 * Time.deltaTime, 0, 0));
 
                         dolphin_rb.AddForce(new Vector3(0, speed, 0), ForceMode.Impulse);
 
@@ -77,6 +84,7 @@ public class Movement : MonoBehaviour
 
                     if (touch.phase == TouchPhase.Stationary && !Grounded)
                     {
+                        animator.SetBool("isIdle", false);
 
                         //camera2.Priority = 12;
 
@@ -86,11 +94,13 @@ public class Movement : MonoBehaviour
 
                         //rot2 = dolphin.transform.rotation.eulerAngles.y;
 
-                        rot1 = dolphin.transform.rotation.eulerAngles.z;
+                        rot1 = dolphin.transform.rotation.eulerAngles.y;
 
-                        dolphin.transform.Rotate(new Vector3(0, 0, rot_Rate * Time.deltaTime));
+                        dolphin.transform.Rotate(new Vector3(5 * Time.deltaTime, rot_Rate * Time.deltaTime, 0));
 
-                        rot2 = dolphin.transform.rotation.eulerAngles.z;
+                        Debug.Log("Spinning");
+
+                        rot2 = dolphin.transform.rotation.eulerAngles.y;
 
                         rot_Difference = rot2 - rot1;
 
@@ -106,6 +116,7 @@ public class Movement : MonoBehaviour
                     if (touch.phase == TouchPhase.Ended)
                     {
                         //camera2.Priority = 10;
+                        animator.SetBool("isIdle", true);
                         Something = false;
                     }
                 }
@@ -115,6 +126,8 @@ public class Movement : MonoBehaviour
             
 
         }
+
+
 
         //Alternative for Keyboard
         if (Input.GetKey(KeyCode.Space) && Grounded)
@@ -129,9 +142,9 @@ public class Movement : MonoBehaviour
 
     void Tilt()
     {
-        tilt_Move = Input.acceleration.x * speed;
+        tilt_Move = Input.acceleration.x * -speed;
 
-        dolphin.transform.Translate(0, 0, tilt_Move * Time.deltaTime);
+        dolphin_rb.transform.Translate(tilt_Move * Time.deltaTime, 0, 0);
 
         //Alternative
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -155,7 +168,7 @@ public class Movement : MonoBehaviour
             Something = true;
         }
     }
-    
+
     IEnumerator WaitASecond()
     {
         yield return new WaitForSeconds(0.15f);

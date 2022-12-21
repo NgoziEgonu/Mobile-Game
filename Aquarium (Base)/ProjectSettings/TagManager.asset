@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Trig
+  - Bounds
   layers:
   - Default
   - TransparentFX

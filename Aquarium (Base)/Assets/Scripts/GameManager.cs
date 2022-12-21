@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     void AddFunds()
     {
-        fundsUI.text = "Funds: " + objectives.fundsCount;
+        fundsUI.text = " " + objectives.fundsCount;
     }
 
     public void LaunchSnack()
